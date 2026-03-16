@@ -1,0 +1,6 @@
+ALTER TABLE professors
+ALTER COLUMN firstname
+
+
+TYPE VARCHAR(16)
+USING SUBSTRING(firstname FROM 1 FOR 16);
