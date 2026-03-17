@@ -14,3 +14,14 @@ ALTER TABLE
 ADD CONSTRAINT
     affiliations_organization_fkey FOREIGN KEY (organization_id) REFERENCES
     organizations(id);
+
+
+
+UPDATE
+    affiliations
+SET 
+    professor_id = professors.id
+FROM professors
+WHERE
+    affiliations.firstname = professors.firstname
+    AND affiliations.lastname = professors.lastname;
