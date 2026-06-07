@@ -1,0 +1,30 @@
+SELECT 
+	stage 
+	, ROUND(avg_goals, 2) AS avg_goals
+
+FROM (
+		SELECT
+			stage
+			, ROUND(AVG(home_goal + away_goal), 2) AS avg_goals
+
+		FROM match 
+		WHERE 
+			season  = '2012/2013'
+		GROUP BY
+			stage 
+	) AS s 
+
+WHERE 
+	s.avg_goals > (
+		SELECT 
+			AVG(home_goal + away_goal)
+		FROM match
+		WHERE
+			season = '2012/2013'
+	);
+
+
+
+
+
+
